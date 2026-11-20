@@ -1,3 +1,4 @@
+
 class Squadra {
     constructor(dati) {
         this.id = dati.idTeam;
@@ -433,6 +434,16 @@ bottoneTema.addEventListener("click", () => {
         applicaTema("light");
     } else {
         applicaTema("dark");
+    }
+});
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+        header.classList.add("header-compatto");
+    } else if (window.scrollY < 30) {
+        header.classList.remove("header-compatto");
     }
 });
 
