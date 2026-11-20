@@ -10,59 +10,88 @@
 </head>
 
 <body>
-    <header class="bg-dark text-white text-center py-3 px-3 sticky-top">
-        <button id="btn-tema" class="btn btn-outline-light btn-sm position-absolute top-0 end-0 m-2">
-            🌙 Scuro
-        </button>
+    <header class="barra sticky-top">
+        <div class="container-xl d-flex align-items-center">
+            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none">
+                <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+                    <rect width="40" height="40" rx="13" fill="#172b25" />
+                    <path d="M12 12h18l-7 17H6z" fill="#d4fb57" />
+                </svg>
+                <span class="logo-testo">sports<span>hub</span></span>
+            </a>
 
-        <h1 class="display-6 fw-bold">SportsHub</h1>
-        <div id="parte-ricerca">
-            <p class="mb-3 d-none d-md-block">Cerca una squadra, scopri prossime partite e ultimi risultati.</p>
+            <nav class="d-none d-md-flex gap-4 ms-5">
+                <a href="#esplora" class="link-nav">Esplora</a>
+                <a href="#filtri" class="link-nav">Campionati</a>
+            </nav>
 
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 col-lg-6">
-                        <form id="form-ricerca" class="input-group">
-                            <input type="text" id="input-ricerca" class="form-control"
-                                placeholder="Cerca una squadra (es. Palermo)" autocomplete="off" />
-                            <button type="submit" class="btn btn-light fw-bold">Cerca</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <button id="btn-tema" class="btn-pillola ms-auto">🌙 Scuro</button>
         </div>
     </header>
 
-    <main class="container py-4">
-        <section>
-            <h2 class="h3 my-4">⭐ Le tue squadre preferite</h2>
-            <div id="preferite" class="row g-3"></div>
-        </section>
+    <section class="container-xl pt-3">
+        <div class="hero">
+            <div class="hero-sfondo"></div>
+            <div class="hero-contenuto">
+                <span class="badge-lime">IL TUO SPAZIO SPORT</span>
+                <h1>Ogni partita,<span>tutta la tua passione.</span></h1>
+                <p>Segui le tue squadre. Vivi ogni momento.</p>
 
-        <section>
-            <h2 class="h3 mt-5 mb-3">Squadre trovate</h2>
-
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                <button class="filtro btn btn-outline-primary active" data-sport="Tutti">Tutti</button>
-                <button class="filtro btn btn-outline-primary" data-sport="Soccer">Calcio</button>
-                <button class="filtro btn btn-outline-primary" data-sport="Basketball">Basket</button>
-                <button class="filtro btn btn-outline-primary" data-sport="American Football">
-                    Football
-                </button>
-            </div>
-
-            <div id="spinner" class="text-center my-4 d-none">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Caricamento...</span>
+                <div id="box-ricerca" class="position-relative">
+                    <form id="form-ricerca" class="barra-ricerca">
+                        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                            <circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="#8a958d" stroke-width="1.7" />
+                            <path d="m12 12 4.5 4.5" stroke="#8a958d" stroke-width="1.7" />
+                        </svg>
+                        <input type="text" id="input-ricerca" placeholder="Cerca una squadra, ad esempio Palermo"
+                            autocomplete="off" />
+                        <button type="submit" class="btn btn-scuro">Cerca →</button>
+                    </form>
+                    <ul id="suggerimenti" class="list-group suggerimenti d-none"></ul>
                 </div>
             </div>
-            <div id="errore" class="alert alert-danger d-none" role="alert"></div>
+        </div>
+    </section>
 
-            <div id="risultati" class="row g-3"></div>
-        </section>
+    <section class="container-xl py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col-12 col-lg-3">
+                <p class="etichetta">LA TUA SELEZIONE</p>
+                <h2 class="titolo-sezione">Le tue squadre preferite</h2>
+                <p class="sotto-titolo">Tutto quello che ami, in un unico posto.</p>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div id="preferite" class="row g-3"></div>
+            </div>
+        </div>
+    </section>
 
-        <section id="dettagli" class="mt-5"></section>
-    </main>
+    <section id="esplora" class="container-xl pb-5">
+        <p class="etichetta">SCOPRI IL MONDO DELLO SPORT</p>
+        <h2 class="titolo-sezione">Trova la tua squadra</h2>
+
+        <div id="filtri" class="d-flex flex-wrap gap-2 my-3">
+            <button class="filtro btn active" data-sport="Tutti">Tutti</button>
+            <button class="filtro btn" data-sport="Soccer">Calcio</button>
+            <button class="filtro btn" data-sport="Basketball">Basket</button>
+            <button class="filtro btn" data-sport="American Football">Football</button>
+        </div>
+
+        <div id="spinner" class="text-center my-4 d-none">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Caricamento...</span>
+            </div>
+        </div>
+        <div id="errore" class="alert alert-danger d-none" role="alert"></div>
+
+        <div id="risultati" class="row g-3"></div>
+        <div id="dettagli" class="mt-4"></div>
+    </section>
+
+    <footer class="container-xl footer-sh d-flex justify-content-between py-4">
+        <span>SPORTSHUB</span>
+        <span>IL GIOCO, A MODO TUO</span>
+    </footer>
 
     <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -76,12 +105,12 @@
         </div>
     </div>
 
-    <button id="btn-su" class="btn btn-primary position-fixed bottom-0 end-0 m-3 d-none">
+    <button id="btn-su" class="btn btn-scuro shadow position-fixed bottom-0 end-0 m-3 d-none">
         ↑ In cima
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 
 </html>
