@@ -28,13 +28,11 @@ class Evento {
         this.trasferta = dati.strAwayTeam;
         this.punteggioCasa = dati.intHomeScore;
         this.punteggioTrasferta = dati.intAwayScore;
-        // campi extra, usati solo nel modal
         this.lega = dati.strLeague ?? "–";
         this.stadio = dati.strVenue ?? "–";
         this.ora = dati.strTime ?? "–";
     }
 
-    // Data in formato italiano
     dataFormattata() {
         const data = new Date(this.data);
         const formato = new Intl.DateTimeFormat("it-IT", {
@@ -176,7 +174,6 @@ async function cercaSquadre(testo) {
         nascondiSpinner();
         disegnaRisultati();
     } catch (errore) {
-
         if (errore.name === "AbortError") {
             return;
         }
@@ -408,4 +405,53 @@ bottoniFiltro.forEach((bottone) => {
     });
 });
 
+const bottoneTema = document.getElementById("btn-tema");
+
+function applicaTema(tema) {
+    document.documentElement.setAttribute("data-bs-theme", tema);
+
+    if (tema === "dark") {
+        bottoneTema.textContent = "☀️ Chiaro";
+    } else {
+        bottoneTema.textContent = "🌙 Scuro";
+    }
+
+    localStorage.setItem("tema", tema);
+}
+
+function leggiTema() {
+    const salvato = localStorage.getItem("tema");
+    if (salvato === null) {
+        return "light";
+    }
+    return salvato;
+}
+
+bottoneTema.addEventListener("click", () => {
+    const attuale = document.documentElement.getAttribute("data-bs-theme");
+    if (attuale === "dark") {
+        applicaTema("light");
+    } else {
+        applicaTema("dark");
+    }
+});
+
+const bottoneSu = document.getElementById("btn-su");
+
+window.addEventListener("scroll", () => {
+    const fondoVisibile = window.innerHeight + window.scrollY;
+    const altezzaPagina = document.documentElement.scrollHeight;
+
+    if (fondoVisibile >= altezzaPagina - 50) {
+        bottoneSu.classList.remove("d-none");
+    } else {
+        bottoneSu.classList.add("d-none");
+    }
+});
+
+bottoneSu.addEventListener("click", () => {
+    window.scrollTo(0, 0);
+});
+
+applicaTema(leggiTema());
 disegnaPreferite();
