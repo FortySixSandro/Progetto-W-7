@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+
+    <header class="bg-dark text-white text-center py-5 px-3">
+        <h1 class="display-5 fw-bold">SportsHub</h1>
+        <p class="mb-4">Cerca una squadra, scopri le prossime partite e ultimi risultati.</p>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <form id="form-ricerca" class="input-group">
+                        <input type="text" id="input-ricerca" class="form-control"
+                            placeholder="Cerca una squadra (es. Palermo)">
+                        <button type="submit" class="btn btn-light fw-bold">Cerca</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-4">
+
+        <section>
+            <h2 class="my-4">⭐ Le tue squadre preferite</h2>
+            <div id="preferite" class="row g-3"></div>
+        </section>
+
+        <section>
+            <h2 class="mt-5 mb-3">Squadre trovate</h2>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button class="filtro btn btn-outline-primary active" data-sport="Tutti">Tutti</button>
+                <button class="filtro btn btn-outline-primary" data-sport="Soccer">Calcio</button>
+                <button class="filtro btn btn-outline-primary" data-sport="Basketball">Basket</button>
+                <button class="filtro btn btn-outline-primary" data-sport="American Football">Football</button>
+            </div>
+
+            <div id="spinner" class="text-center my-4 d-none">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Caricamento...</span>
+                </div>
+            </div>
+
+            <div id="errore" class="alert alert-danger d-none" role="alert"></div>
+            <div id="risultati" class="row g-3"></div>
+        </section>
+
+        <section id="dettagli" class="mt-5"></section>
+    </main>
+
+    <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-titolo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+                </div>
+                <div class="modal-body" id="modal-contenuto"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
